@@ -13,6 +13,8 @@ import Web3Menu from "./common/Web3Menu";
 import Home from './pages/Home';
 import Create from './pages/Create';
 import Txs from './pages/Txs';
+import WalletConnect from "@walletconnect/client";
+import QRCodeModal from "@walletconnect/qrcode-modal";
 
 /**
  * Appコンポーネント
@@ -20,14 +22,40 @@ import Txs from './pages/Txs';
 function App() {
   // ステート変数
   const [currentAccount, setCurrentAccount] = useState(null);
-  const [connecter, setConnecter] = useState(null);
-  // Metamaskのオブジェクトを取得する。
-  const { ethereum } = window;
+  // create connector object
+  const connector = new WalletConnect({
+    bridge: "https://bridge.walletconnect.org", 
+    qrcodeModal: QRCodeModal,
+  });
 
   // 接続するチェーンIDが変化したタイミングで再読み込みを実行する。
-  ethereum.on('chainChanged', (_chainId) => window.location.reload());
+  window.ethereum.on('chainChanged', (_chainId) => window.location.reload());
   // アカウントが切り替わったタイミングで再読み込みを実行する。
-  ethereum.on('accountsChanged', () => window.location.reload());
+  window.ethereum.on('accountsChanged', () => window.location.reload());
+
+  // Subscribe to connection events
+  connector.on("connect", (error, payload) => {
+    if (error) {
+      throw error;
+    }
+    // Get provided accounts and chainId
+    const { accounts, chainId } = payload.params[0];
+  });
+
+  connector.on("session_update", (error, payload) => {
+    if (error) {
+      throw error;
+    }
+    // Get updated accounts and chainId
+    const { accounts, chainId } = payload.params[0];
+  });
+
+  connector.on("disconnect", (error, payload) => {
+    if (error) {
+      throw error;
+    }
+    // Delete connector
+  });
 
   /**
    * 接続されているネットワークが想定されているものかチェックする。
@@ -51,12 +79,19 @@ function App() {
    * ウォレットの接続状態を確認するメソッド
    */
   const checkIfWalletIsConnected = async () => {
+    // Metamaskのオブジェクトを取得する。
+    const { ethereum } = window;
 
     try {
-      // インストールされていない場合
+      // not installed ro Mobile
       if (!ethereum) {
-        alert("Please install MetaMask!");
-        return;
+        if (!connector) {
+          // create new session
+          connector.createSession();
+        } else {
+          alert("Please install MetaMask!");
+          return;
+        }
       } else {
         // インストールされている場合
         // MetaMaskのアカウント情報を取得する。
@@ -82,7 +117,7 @@ function App() {
     try {
       // Metamaskのオブジェクトを取得する。
       const { ethereum } = window;
-      // インストールされていなかった場合
+      // not installed ro Mobile
       if (!ethereum) {
         alert("Please install MetaMask!");
         return;
