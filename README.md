@@ -235,6 +235,9 @@ Summary
  <a href="https://www.youtube.com/watch?v=romGtIu4oWI">https://www.youtube.com/watch?v=romGtIu4oWI</a>  
  [Presentation Video](https://www.youtube.com/watch?v=-rLWfQZCCCQ)
 
-### 参考文献
+### Refference
 1. <a href="https://lab.miguelmota.com/ethereum-input-data-decoder/example/">InputDataDecoder</a>
 2. <a href="https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html">Web3.jsのドキュメント</a>
+3. [WalletConnect](https://docs.walletconnect.com/)
+4. [WalletConnectExampleDappRepo](https://github.com/WalletConnect/walletconnect-example-dapp)
+5. [WalletConnectExampleDapp](https://example.walletconnect.org/)

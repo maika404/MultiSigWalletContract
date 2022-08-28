@@ -1,6 +1,6 @@
-import './../App.css';
+import './../../assets/css/App.css';
 import React from "react";
-import twitterLogo from './../../assets/twitter-logo.svg';
+import twitterLogo from './../../assets/imgs/twitter-logo.svg';
 
 // ツイッターリンク用の定数を定義する。
 const TWITTER_HANDLE = 'HARUKI05758694';

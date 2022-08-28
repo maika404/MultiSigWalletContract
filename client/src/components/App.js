@@ -7,12 +7,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import './App.css';
+import './../assets/css/App.css';
 import NoPage from './common/NoPage';
 import Web3Menu from "./common/Web3Menu";
-import Home from './Home';
-import Create from './Create';
-import Txs from './Txs';
+import Home from './pages/Home';
+import Create from './pages/Create';
+import Txs from './pages/Txs';
 
 /**
  * Appコンポーネント

@@ -1,9 +1,9 @@
-import './App.css';
+import './../../assets/css/App.css';
 import React, { useState, useEffect } from "react";
 import detectEthereumProvider from '@metamask/detect-provider';
-import walletContract from "./../contracts/MultiSigWallet.json";
+import walletContract from "../../contracts/MultiSigWallet.json";
 import Web3 from "web3";
-import ActionButton2 from './common/ActionButton2';
+import ActionButton2 from '../common/ActionButton2';
 // mui関連のコンポーネントのインポート
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
