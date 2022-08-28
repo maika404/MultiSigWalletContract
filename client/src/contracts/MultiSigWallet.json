@@ -127,7 +127,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -146,7 +147,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -165,7 +167,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -178,7 +181,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -212,7 +216,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -225,11 +230,13 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "stateMutability": "payable",
-      "type": "receive"
+      "type": "receive",
+      "payable": true
     },
     {
       "inputs": [
@@ -284,7 +291,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -297,7 +305,8 @@
       "name": "execute",
       "outputs": [],
       "stateMutability": "payable",
-      "type": "function"
+      "type": "function",
+      "payable": true
     },
     {
       "inputs": [
@@ -323,7 +332,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -336,7 +346,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -349,7 +360,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -384,7 +396,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"address[]\",\"name\":\"_owners\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"_required\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"txId\",\"type\":\"uint256\"}],\"name\":\"Approve\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"txId\",\"type\":\"uint256\"}],\"name\":\"Execute\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"txId\",\"type\":\"uint256\"}],\"name\":\"Revoke\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"txId\",\"type\":\"uint256\"}],\"name\":\"Submit\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_txId\",\"type\":\"uint256\"}],\"name\":\"_getApprovalCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"count\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_txId\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"approved\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_txId\",\"type\":\"uint256\"}],\"name\":\"execute\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getOwnersCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRequired\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTxs\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"}],\"internalType\":\"struct MultiSigWallet.Transaction[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"owners\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"required\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_txId\",\"type\":\"uint256\"}],\"name\":\"revoke\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"_data\",\"type\":\"bytes\"}],\"name\":\"submit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"transactions\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"walletName\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"_getApprovalCount(uint256)\":{\"params\":{\"_txId\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3ID\"}},\"approve(uint256)\":{\"params\":{\"_txId\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3ID\"}},\"constructor\":{\"params\":{\"_name\":\"\\u30a6\\u30a9\\u30ec\\u30c3\\u30c8\\u306e\\u540d\\u524d\",\"_owners\":\"owner\\u7528\\u306e\\u30a2\\u30c9\\u30ec\\u30b9\\u306e\\u914d\\u5217\",\"_required\":\"\\u95be\\u5024\"}},\"execute(uint256)\":{\"params\":{\"_txId\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3ID\"}},\"revoke(uint256)\":{\"params\":{\"_txId\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3ID\"}},\"submit(address,uint256,bytes)\":{\"params\":{\"_data\":\"\\u30d0\\u30a4\\u30c8\\u30c7\\u30fc\\u30bf\",\"_to\":\"\\u9001\\u91d1\\u5148\\u30a2\\u30c9\\u30ec\\u30b9\",\"_value\":\"\\u9001\\u91d1\\u984d\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"_getApprovalCount(uint256)\":{\"notice\":\"\\u6307\\u5b9a\\u3057\\u3066ID\\u306e\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3\\u306e\\u627f\\u8a8d\\u6570\\u3092\\u53d6\\u5f97\\u3059\\u308b\\u3002\"},\"approve(uint256)\":{\"notice\":\"\\u6307\\u5b9a\\u3057\\u305fID\\u306e\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3\\u3092\\u627f\\u8a8d\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"},\"constructor\":{\"notice\":\"\\u30b3\\u30f3\\u30b9\\u30c8\\u30e9\\u30af\\u30bf\\u30fc\"},\"execute(uint256)\":{\"notice\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3\\u3092\\u30d6\\u30ed\\u30fc\\u30c9\\u30ad\\u30e3\\u30b9\\u30c8\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"},\"getName()\":{\"notice\":\"\\u30a6\\u30a9\\u30ec\\u30c3\\u30c8\\u306e\\u540d\\u524d\\u3092\\u53d6\\u5f97\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"},\"getOwnersCount()\":{\"notice\":\"owner\\u306e\\u30a2\\u30c9\\u30ec\\u30b9\\u6570\\u3092\\u53d6\\u5f97\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"},\"getRequired()\":{\"notice\":\"\\u30a6\\u30a9\\u30ec\\u30c3\\u30c8\\u306e\\u95be\\u5024\\u3092\\u53d6\\u5f97\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"},\"getTxs()\":{\"notice\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3\\u30c7\\u30fc\\u30bf\\u3092\\u5168\\u3066\\u53d6\\u5f97\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"},\"revoke(uint256)\":{\"notice\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3\\u306e\\u627f\\u8a8d\\u3092\\u524a\\u9664\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"},\"submit(address,uint256,bytes)\":{\"notice\":\"\\u30c8\\u30e9\\u30f3\\u30b6\\u30af\\u30b7\\u30e7\\u30f3\\u30c7\\u30fc\\u30bf\\u3092\\u4f5c\\u6210\\u3059\\u308b\\u30e1\\u30bd\\u30c3\\u30c9\"}},\"notice\":\"MultiSigWallet\\u30b3\\u30f3\\u30c8\\u30e9\\u30af\\u30c8\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/MultiSigWallet.sol\":\"MultiSigWallet\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/MultiSigWallet.sol\":{\"keccak256\":\"0x9f0461e711083e5724c84949dcb3f9e3a1903c97e751afcd56a7dc7a625749f9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0b454b92ff2d12e7874acb532198782ca73cc83d5f2a72b655931a63d1a5995c\",\"dweb:/ipfs/QmUwvzdERKxgFdLmdh1pVjFz1uuJ852VxBZPjsYFcgDVZp\"]}},\"version\":1}",
@@ -25496,9 +25509,23 @@
     "name": "solc",
     "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "97": {
+      "events": {},
+      "links": {},
+      "address": "0xAa363921A48Eac63F802C57658CdEde768B3DAe1",
+      "transactionHash": "0x0791477e9185ad522d089ed04fde05961a0362dce014e4f103c46fbdbf7e9216"
+    },
+    "43113": {
+      "events": {},
+      "links": {},
+      "address": "0xAa363921A48Eac63F802C57658CdEde768B3DAe1",
+      "transactionHash": "0xabc0ca4a7b8f91ac7930b4ce9f2b16da170f6e4a9f14f2dabf21715760bee463"
+    }
+  },
   "schemaVersion": "3.4.4",
-  "updatedAt": "2022-07-17T14:30:48.554Z",
+  "updatedAt": "2022-08-28T02:40:57.445Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {

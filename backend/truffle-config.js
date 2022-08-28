@@ -11,12 +11,27 @@ const {
   MNEMONIC, 
   ALCHEMY_APIKEY,
   ALCHEMY_GOERLI_APIKEY,
-  ALCHEMY_MUNBAI_APIKEY
+  ALCHEMY_MUNBAI_APIKEY,
+  ETHERSCAN_API_KEY,
+  POLYGONSCAN_API_KEY,
+  BSCSCAN_API_KEY,
+  SNOWTRACE_API_KEY
 } = process.env;
 
 module.exports = {
   // bulid path for ABI json files
   contracts_build_directory: path.join(__dirname, "./../client/src/contracts"),
+  //  plugin
+  plugins: [
+    'truffle-plugin-verify'
+  ],
+  // config for API
+  api_keys: {
+    etherscan: ETHERSCAN_API_KEY,
+    polygonscan: POLYGONSCAN_API_KEY,
+    bscscan: BSCSCAN_API_KEY,
+    snowtrace: SNOWTRACE_API_KEY,
+  },
   // config for networks
   networks: {
     develop: {
@@ -68,6 +83,20 @@ module.exports = {
       network_id: 80001,
       // gas: 500000,
       confirmations: 2,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
+    bsctestnet: {
+      provider: () => new HDWalletProvider2(MNEMONIC, `https://data-seed-prebsc-1-s1.binance.org:8545`),
+      network_id: 97,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },
+    fuji: {
+      provider: () => new HDWalletProvider2(MNEMONIC, `https://api.avax-test.network/ext/bc/C/rpc`),
+      network_id: 43113,
+      confirmations: 10,
       timeoutBlocks: 200,
       skipDryRun: true
     },
