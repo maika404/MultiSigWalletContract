@@ -408,3 +408,4 @@ Summary
 5. [WalletConnectExampleDapp](https://example.walletconnect.org/)
 6. [truffle-plugin-verify](https://www.npmjs.com/package/truffle-plugin-verify)
 7. [ChainList](https://chainlist.org/)
+8. [MetaMaskDocs](https://docs.metamask.io/guide/rpc-api.html#unrestricted-methods)

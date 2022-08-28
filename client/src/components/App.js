@@ -16,46 +16,18 @@ import Txs from './pages/Txs';
 import WalletConnect from "@walletconnect/client";
 import QRCodeModal from "@walletconnect/qrcode-modal";
 
+// create connector object
+const connector = new WalletConnect({
+  bridge: "https://bridge.walletconnect.org", 
+  qrcodeModal: QRCodeModal,
+});
+
 /**
  * Appコンポーネント
  */
 function App() {
   // ステート変数
   const [currentAccount, setCurrentAccount] = useState(null);
-  // create connector object
-  const connector = new WalletConnect({
-    bridge: "https://bridge.walletconnect.org", 
-    qrcodeModal: QRCodeModal,
-  });
-
-  // 接続するチェーンIDが変化したタイミングで再読み込みを実行する。
-  window.ethereum.on('chainChanged', (_chainId) => window.location.reload());
-  // アカウントが切り替わったタイミングで再読み込みを実行する。
-  window.ethereum.on('accountsChanged', () => window.location.reload());
-
-  // Subscribe to connection events
-  connector.on("connect", (error, payload) => {
-    if (error) {
-      throw error;
-    }
-    // Get provided accounts and chainId
-    const { accounts, chainId } = payload.params[0];
-  });
-
-  connector.on("session_update", (error, payload) => {
-    if (error) {
-      throw error;
-    }
-    // Get updated accounts and chainId
-    const { accounts, chainId } = payload.params[0];
-  });
-
-  connector.on("disconnect", (error, payload) => {
-    if (error) {
-      throw error;
-    }
-    // Delete connector
-  });
 
   /**
    * 接続されているネットワークが想定されているものかチェックする。
@@ -65,7 +37,7 @@ function App() {
     var networkId = window.ethereum.networkVersion;
 
     try {
-      if (networkId !== "4" && "5" && "80001" && "97" && "43113") {
+      if (networkId !== "4" || "5" || "80001" || "97" || "43113") {
         alert("Please connect a correct network");
       } else {
         console.log("connect!!");
@@ -85,7 +57,7 @@ function App() {
     try {
       // not installed ro Mobile
       if (!ethereum) {
-        if (!connector) {
+        if (connector) {
           // create new session
           connector.createSession();
         } else {
@@ -114,18 +86,58 @@ function App() {
    * ウォレット接続ボタンを押した時の処理
    */
   const connectWalletAction = async () => {
+    // Metamaskのオブジェクトを取得する。
+    const { ethereum } = window;
+    // message for sign 
+    const messagebody = JSON.stringify(
+      {
+        domain: {
+          chainId: ethereum.networkVersion,
+          name: 'MultiSigWalletDApp',
+          version: '1'
+        },
+        message: {
+          text:'This is the MultiSigWalletDApp. Will you approve for connecting this DApp?'
+        },
+        primaryType: 'Message',
+        types: {
+          EIP712Domain: [
+            { name: 'name', type: 'string' },
+            { name: 'version', type: 'string' },
+            { name: 'chainId', type: 'uint256' }
+          ],
+          Message: [
+            { name: 'confirm', type: 'string' },
+          ]
+        }
+      }
+    );
+
     try {
-      // Metamaskのオブジェクトを取得する。
-      const { ethereum } = window;
       // not installed ro Mobile
       if (!ethereum) {
-        alert("Please install MetaMask!");
-        return;
+        if (connector) {
+          // create new session
+          connector.createSession();
+        } else {
+          alert("Please install MetaMask!");
+          return;
+        }
       }
       // ウォレットの接続状態をチェックする。
       checkIfWalletIsConnected();
       // ウォレットアドレスに対してアクセスをリクエストする。
-      const accounts = await ethereum.request({method: "eth_requestAccounts",});
+      const accounts = await ethereum.request({method: "eth_requestAccounts",})
+                                      .then(() => {
+                                        // EIP-712 sign request
+                                        ethereum.request({
+                                          method: 'eth_signTypedData_v1',
+                                          params: [
+                                            accounts[0],
+                                            messagebody
+                                          ]
+                                        });
+                                      });
       // ステート変数にアカウント情報を格納する。
       setCurrentAccount(accounts[0]);
       // goreliネットワークに接続されていることをチェックする。
@@ -145,6 +157,42 @@ function App() {
     checkIfWalletIsConnected();
   }, [currentAccount]);
 
+  // 副作用フック(読み込み時)
+  useEffect(() => {
+    // 接続するチェーンIDが変化したタイミングで再読み込みを実行する。
+    window.ethereum.on('chainChanged', (_chainId) => window.location.reload());
+    // アカウントが切り替わったタイミングで再読み込みを実行する。
+    window.ethereum.on('accountsChanged', () => window.location.reload());
+  }, [window.ethereum]);
+
+  // 副作用フック(読み込み時)
+  useEffect(() => {
+    /*
+    // Subscribe to connection events
+    connector.on("connect", (error, payload) => {
+      if (error) {
+        throw error;
+      }
+      // Get provided accounts and chainId
+      const { accounts, chainId } = payload.params[0];
+    });
+
+    connector.on("session_update", (error, payload) => {
+      if (error) {
+        throw error;
+      }
+      // Get updated accounts and chainId
+      const { accounts, chainId } = payload.params[0];
+    });
+
+    connector.on("disconnect", (error, payload) => {
+      if (error) {
+        throw error;
+      }
+      // Delete connector
+    });
+    */
+  }, [connector]);
 
   return (
     <>
