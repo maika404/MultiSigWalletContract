@@ -55,6 +55,27 @@ BSCSCAN_API_KEY=<YOUR_DATA>
 SNOWTRACE_API_KEY=<YOUR_DATA>
 MNEMONIC=<YOUR_DATA>
 ```
+### how to work this repo (SmartContract)
+
+1. `cd backend`
+2. choose a commands from the below described
+
+    `npm run test`  
+    `npm run build`  
+    `npm run migrate:local`  
+    `npm run migrate:goreli`  
+    `npm run migrate:munbai`  
+    `npm run migrate:bsctestnet`  
+    `npm run migrate:fuji`  
+    `npm run verify:goreli`  
+    `npm run verify:munbai`  
+    `npm run verify:bsctestnet`  
+    `npm run verify:fuji`  
+
+### how to work this repo (frontend)
+
+1. `cd client`
+2. `npm run start`
 
 ### test result
 
@@ -112,11 +133,6 @@ txData: {
 
   16 passing (10s)
 ```
-
-### 必要機能
-1. ウォレット作成画面
-2. ウォレット詳細画面(トランザクションデータ)
-3. ウォレット一覧画面(Home画面)
 
 ### result of migration
 
@@ -384,10 +400,11 @@ Summary
  <a href="https://www.youtube.com/watch?v=romGtIu4oWI">https://www.youtube.com/watch?v=romGtIu4oWI</a>  
  [Presentation Video](https://www.youtube.com/watch?v=-rLWfQZCCCQ)
 
-### Refference
+### References
 1. <a href="https://lab.miguelmota.com/ethereum-input-data-decoder/example/">InputDataDecoder</a>
 2. <a href="https://web3js.readthedocs.io/en/v1.2.11/web3-eth-abi.html">Web3.jsのドキュメント</a>
 3. [WalletConnect](https://docs.walletconnect.com/)
 4. [WalletConnectExampleDappRepo](https://github.com/WalletConnect/walletconnect-example-dapp)
 5. [WalletConnectExampleDapp](https://example.walletconnect.org/)
 6. [truffle-plugin-verify](https://www.npmjs.com/package/truffle-plugin-verify)
+7. [ChainList](https://chainlist.org/)

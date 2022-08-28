@@ -20,6 +20,7 @@ import Txs from './pages/Txs';
 function App() {
   // ステート変数
   const [currentAccount, setCurrentAccount] = useState(null);
+  const [connecter, setConnecter] = useState(null);
   // Metamaskのオブジェクトを取得する。
   const { ethereum } = window;
 
@@ -32,11 +33,14 @@ function App() {
    * 接続されているネットワークが想定されているものかチェックする。
    */
   const checkNetwork = async () => {
+    // get network ID  
+    var networkId = window.ethereum.networkVersion;
+
     try {
-      if (window.ethereum.networkVersion !== "5") {
-        alert("Goreli Test Network に接続してください!");
+      if (networkId !== "4" && "5" && "80001" && "97" && "43113") {
+        alert("Please connect a correct network");
       } else {
-        console.log("Goreliに接続中。");
+        console.log("connect!!");
       }
     } catch (error) {
       console.log(error);

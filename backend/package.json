@@ -29,7 +29,7 @@
   "bugs": {
     "url": "https://github.com/mashharuki/MultiSigWalletContract/issues"
   },
-  "homepage": "https://github.com/mashharuki/MultiSigWalletContract#readme",
+  "homepage": "https://multi-sig-wallet-contract.vercel.app/",
   "dependencies": {
     "@truffle/hdwallet-provider": "^2.0.11",
     "chai": "^4.3.6",
