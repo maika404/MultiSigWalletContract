@@ -1,10 +1,10 @@
-import './App.css';
+import './../../assets/css/App.css';
 import React, { useState, useEffect } from "react";
 import detectEthereumProvider from '@metamask/detect-provider';
-import FactoryContract from "./../contracts/WalletFactory.json";
+import FactoryContract from "../../contracts/WalletFactory.json";
 import Web3 from "web3";
-import ActionButton from './common/ActionButton';
-import LoadingIndicator from './common/LoadingIndicator/LoadingIndicator';
+import ActionButton from '../common/ActionButton';
+import LoadingIndicator from '../common/LoadingIndicator/LoadingIndicator';
 // mui関連のコンポーネントのインポート
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
